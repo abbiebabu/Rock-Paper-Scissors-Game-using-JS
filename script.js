@@ -42,17 +42,53 @@ const randomNum = Math.floor(Math.random()*3);
 return options[randomNum];
 }
 
+const Draw=()=>{
+    console.log('draw');
+};
+
+const showWinner=(userWinner)=>{
+   if(userWinner){
+       console.log('user wins');
+   }
+   else{
+       console.log('computer wins');
+   }
+}
 const playGame=(userChoice)=>{
     console.log('you choose =', userChoice);
-const compChoice= genCompChoice();
-console.log('comp choose =', compChoice);
+    const compChoice= genCompChoice();
+    console.log('comp choose =', compChoice);
+
+
+    if (userChoice === compChoice){
+     Draw();
+    }
+    else{
+     let userWinner =true;
+        if (userChoice === "rock")  {
+        userWinner = compChoice === "paper" ? false : true;
+    }
+        else if (userChoice === "paper") {
+            userWinner = compChoice === "scissors" ? false : true;
+
+        }
+        else{
+           userWinner= compChoice === "rock" ? false : true;
+
+        }
+        showWinner(userWinner)
+      
+    }
+
 }
+
 
 choices.forEach((choice) =>{
 
 choice.addEventListener("click",()=>{
     const userChoice = choice.getAttribute("id");
     playGame(userChoice);
+
 })
 
-});
+})
