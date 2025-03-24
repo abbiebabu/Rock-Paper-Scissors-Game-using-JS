@@ -35,14 +35,24 @@ userScore=0;
 computerScore=0;
 
 const choices=document.querySelectorAll(".choice");
+
+const genCompChoice=()=>{
+const options = ["rock","paper","scissors"];
+const randomNum = Math.floor(Math.random()*3);
+return options[randomNum];
+}
+
+const playGame=(userChoice)=>{
+    console.log('you choose =', userChoice);
+const compChoice= genCompChoice();
+console.log('comp choose =', compChoice);
+}
+
 choices.forEach((choice) =>{
 
 choice.addEventListener("click",()=>{
-    const usrChoice = choice.getAttribute("id");
-    console.log('you choose', usrChoice);
-    
+    const userChoice = choice.getAttribute("id");
+    playGame(userChoice);
 })
 
 });
-
-// sas
