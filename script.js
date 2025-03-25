@@ -31,8 +31,12 @@
 
 
 
-const userScore=0;
-const computerScore=0;
+let userScore=0;
+let computerScore=0;
+
+
+const userScorePara=document.querySelector('#user-score');
+const computerScorePara=document.querySelector('#comp-score');
 
 const choices=document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
@@ -52,13 +56,17 @@ const Draw=()=>{
 
 const showWinner=(userWinner,userChoice,compChoice)=>{
    if(userWinner){
-    msg.innerText = `As ${userChoice} beats ${compChoice} you win !`;
+    userScore++
+    userScorePara.innerText = userScore;
+    msg.innerText = `You win your ${userChoice} beats ${compChoice} !`;
     msg.style.backgroundColor = "green";
     console.log('user wins');
 
    }
    else{
-     msg.innerText = `As ${compChoice} beats ${userChoice} you loose`;
+     computerScore++;
+     computerScorePara.innerText = computerScore;
+     msg.innerText = `You Loose ${compChoice} beats ${userChoice} `;
      msg.style.backgroundColor = "Red";
      console.log('user loose');
    }
